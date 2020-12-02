@@ -40,4 +40,26 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Relations
+     */
+
+     public function models()
+     {
+        return $this->hasMany(Model3D::class);
+     }
+
+     /**
+      * Functions
+      */
+
+      public function createModel3d($title,$description,$uniqueFileName)
+      {
+        return $this->models()->create([
+            'title'=>$title,
+            'description'=>$description,
+            'file_name'=>$uniqueFileName
+        ]);
+      }
 }
