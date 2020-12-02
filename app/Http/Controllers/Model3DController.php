@@ -41,8 +41,8 @@ class Model3DController extends Controller
      */
     public function store(Request $request)
     {
-        $user = auth()->user();
-        $file = $request->file('file');
+       $user = auth()->user();
+       $file = $request->file('file');
 
        $result = CustomFile::store($file);
 
@@ -52,11 +52,6 @@ class Model3DController extends Controller
        else{
            return response(null,500);
        }
-
-
-
-
-        // Storage::disk('public')->m  ("objects3d\\$this->root_dir\\ejemplo.dll", $file);
     }
 
     /**
