@@ -7,7 +7,7 @@
         </div>
          <div class="row my-4">
             <div class="col-lg-12 col-md-12 text-center">
-                <a href="#" class="btn btn-success">Subir objeto 3D</a>
+                <a href="/model/create" class="btn btn-success">Subir objeto 3D</a>
             </div>
         </div>
         <div class="row d-flex justify-content-center">
