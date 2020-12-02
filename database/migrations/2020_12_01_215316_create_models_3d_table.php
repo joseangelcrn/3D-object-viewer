@@ -16,8 +16,9 @@ class CreateModels3dTable extends Migration
         Schema::create('models_3d', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->text('description');
+            $table->text('description')->nullable()->default(null);
             $table->string('file_name');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
         });
     }
