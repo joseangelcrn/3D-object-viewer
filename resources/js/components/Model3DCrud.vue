@@ -34,7 +34,7 @@
                     <div class="form-group">
                         <button
                         :class="[isCreate ? 'btn btn-success' : 'btn btn-primary']"
-                        :disabled="model3d.title.trim() === '' || sending"
+                        :disabled="model3d.title.trim() === '' || sending || file == null"
                          type="button" @click="httpSend">
                             <span v-if="isCreate">Crear</span>
                             <span v-else>Actualizar</span>
