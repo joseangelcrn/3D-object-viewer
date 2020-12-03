@@ -54,6 +54,10 @@ class User extends Authenticatable
       * Functions
       */
 
+    /**
+     * Create model3d (binary file and data of database)
+     */
+
       public function createModel3d($title,$description,$uniqueFileName)
       {
         return $this->models()->create([
@@ -63,26 +67,26 @@ class User extends Authenticatable
         ]);
       }
 
+      /**
+       * Delete model3d (binary file and data of database)
+       */
+
       public function deleteModel3d($id)
       {
         $deleted = false;
         $fileDeleted = false;
-        $dataDeleted = false;
+        $fileExists = true;
 
         $model = $this->models()->findOrFail($id);
+        $fileExists = CustomFile::existsModel($model->file_name);
 
-
-        //bin part
-        $fileDeleted = CustomFile::remove($model->file_name);
-
-
-        //bd part
-
-        if ($fileDeleted) {
-            $dataDeleted = $model->delete();
+        //found file so is going to delete it
+        if ($fileExists) {
+            $fileDeleted = CustomFile::removeModel($model->file_name);
         }
-        else if ($fileDeleted and $dataDeleted) {
-            $deleted = true;
+        //if file doesnt exists or file is already deleted then delete model of database
+        if ($fileDeleted or !$fileExists) {
+            $deleted = $model->delete();
         }
 
         return $deleted;
