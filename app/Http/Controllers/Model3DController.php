@@ -63,6 +63,10 @@ class Model3DController extends Controller
     public function show($id)
     {
         //
+        $user = Auth::user();
+        $model = $user->models()->findOrFail($id);
+
+        return view('model3d.show',compact('model'));
     }
 
     /**
