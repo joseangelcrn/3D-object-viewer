@@ -62,4 +62,29 @@ class User extends Authenticatable
             'file_name'=>$uniqueFileName
         ]);
       }
+
+      public function deleteModel3d($id)
+      {
+        $deleted = false;
+        $fileDeleted = false;
+        $dataDeleted = false;
+
+        $model = $this->models()->findOrFail($id);
+
+
+        //bin part
+        $fileDeleted = CustomFile::remove($model->file_name);
+
+
+        //bd part
+
+        if ($fileDeleted) {
+            $dataDeleted = $model->delete();
+        }
+        else if ($fileDeleted and $dataDeleted) {
+            $deleted = true;
+        }
+
+        return $deleted;
+      }
 }
