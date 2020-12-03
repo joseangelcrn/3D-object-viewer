@@ -23,7 +23,7 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 Vue.component('welcome', require('./components/Welcome.vue').default);
 Vue.component('home', require('./components/Home.vue').default);
 
-Vue.component('model-crud', require('./components/Model3DCrud.vue').default);
+Vue.component('model3d-crud', require('./components/Model3DCrud.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

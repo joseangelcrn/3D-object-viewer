@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Model3DController;
+use App\Models\Model3D;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,5 +23,7 @@ Auth::routes();
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+    Route::resource('/model', Model3DController::class);
 });
 
