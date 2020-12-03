@@ -101,5 +101,7 @@ class Model3DController extends Controller
     public function destroy($id)
     {
         //
+        $user = Auth::user();
+        $user->deleteModel3D($id);
     }
 }
