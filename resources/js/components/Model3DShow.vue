@@ -9,7 +9,7 @@
         <hr>
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12">
-                <model3d-viewer :path="'models3D\\'+model.file_name"></model3d-viewer>
+                <model3d-viewer :path="'../storage/models3D/'+model.file_name"></model3d-viewer>
             </div>
         </div>
     </div>
