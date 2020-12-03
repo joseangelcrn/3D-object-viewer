@@ -85,7 +85,6 @@
                 isResponseOk:null,
                 sending:false,
                 file:null,
-
                 headers:{
                     'Content-Type': 'multipart/form-data',
                 }
@@ -148,14 +147,6 @@
             loadPreviewFile(event){
                 console.log('Pre-load files');
                 this.file = event.target.files[0];
-                // console.log('PreviewFile');
-                // console.log(previewFile);
-
-
-                // console.log('File');
-                // console.log(this.file);
-
-
                 console.log('----+++---');
                 console.log(this.file);
             },
