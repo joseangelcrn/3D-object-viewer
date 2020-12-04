@@ -94,13 +94,12 @@ class Model3DController extends Controller
         //
         $title = $request->title;
         $description = $request->description;
+        $file = $request->file;
 
-        $model = Auth::user()->models()->findOrFail($id);
-        $model->update([
-            'title'=>$title,
-            'description'=>$description,
-        ]);
-    }
+        Auth::user()->updateModel3d($id,$title,$description,$file);
+
+
+    }   
 
     /**
      * Remove the specified resource from storage.
