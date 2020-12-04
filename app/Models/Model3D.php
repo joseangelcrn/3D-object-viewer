@@ -18,7 +18,7 @@ class Model3D extends Model
         'description',
         'file_name',
         'file_size',
-        'extension'
+        'file_extension'
     ];
 
     /**
