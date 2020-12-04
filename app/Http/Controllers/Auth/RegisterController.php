@@ -64,10 +64,12 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $rootDir = substr(base_convert(sha1(uniqid(mt_rand())), 16, 36), 0, 9);
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'root_dir' => $rootDir
         ]);
     }
 }
