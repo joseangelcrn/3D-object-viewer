@@ -16,10 +16,10 @@
                 <ul class="list-group">
                     <li class="list-group-item" v-for="(model,index) in data_user.models" :key="index">
                         <div class="row">
-                            <div class="col-lg-8 col-md-6">
+                            <div class="col-lg-8 col-md-6 col-xs-6">
                                 {{model.title}}
                             </div>
-                            <div class="col-lg-4 col-md-6">
+                            <div class="col-lg-4 col-md-6 col-xs-6">
                                 <a :href="'/model/'+model.id" class="btn btn-primary btn-sm" :class="[sending ? 'disabled' : '']">Ver</a>
                                 <a  @click="deleteModelWithConfirm(model.id,index)" class="btn btn-danger btn-sm" :class="[sending ? 'disabled' : '']">Borrar</a>
                             </div>
