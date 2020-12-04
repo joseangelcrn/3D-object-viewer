@@ -16,7 +16,9 @@ class Model3D extends Model
     protected $fillable = [
         'title',
         'description',
-        'file_name'
+        'file_name',
+        'file_size',
+        'extension'
     ];
 
     /**
