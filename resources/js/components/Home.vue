@@ -20,8 +20,9 @@
                                 {{model.title}}
                             </div>
                             <div class="col-lg-4 col-md-6 col-xs-6">
-                                <a :href="'/model/'+model.id" class="btn btn-primary btn-sm" :class="[sending ? 'disabled' : '']">Ver</a>
-                                <a  @click="deleteModelWithConfirm(model.id,index)" class="btn btn-danger btn-sm" :class="[sending ? 'disabled' : '']">Borrar</a>
+                                <a :href="'/model/'+model.id" class="btn btn-primary btn-sm border-dark" :class="[sending ? 'disabled' : '']">Ver</a>
+                                <a :href="'/model/'+model.id+'/edit'" class="btn btn-warning btn-sm border-dark" :class="[sending ? 'disabled' : '']">Editar</a>
+                                <a  @click="deleteModelWithConfirm(model.id,index)" class="btn btn-danger btn-sm border-dark" :class="[sending ? 'disabled' : '']">Borrar</a>
                             </div>
                         </div>
                     </li>
