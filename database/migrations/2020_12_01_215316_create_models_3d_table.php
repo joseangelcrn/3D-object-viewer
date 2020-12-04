@@ -18,6 +18,8 @@ class CreateModels3dTable extends Migration
             $table->string('title');
             $table->text('description')->nullable()->default(null);
             $table->string('file_name');
+            $table->string('file_size');
+            $table->string('file_extension');
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
         });

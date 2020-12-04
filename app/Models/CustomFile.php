@@ -23,10 +23,15 @@ class CustomFile
     private static function store($file,$pathOfServer)
     {
         $uniqueFileName = uniqid().'_'.$file->getClientOriginalName();
+        $extension = $file->getClientOriginalExtension();
+        $size = $file->getSize();
+
         $stored =  self::defaultDisk()->put($pathOfServer."\\".$uniqueFileName,  File::get($file));
         $result = [
             'stored' => $stored,
-            'unique_file_name'=>$uniqueFileName
+            'unique_file_name'=>$uniqueFileName,
+            'file_extension'=>$extension,
+            'file_size'=>$size,
         ];
         return $result;
     }

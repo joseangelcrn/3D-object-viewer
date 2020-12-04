@@ -25,6 +25,8 @@ class ModelSeeder extends Seeder
                 'title'=>$faker->text(20),
                 'description'=>$faker->text(20),
                 'file_name'=>$faker->text(5),
+                'file_size'=>$faker->numberBetween(100,1000),
+                'file_extension'=>$faker->fileExtension,
             ]);
         }
     }
