@@ -175,6 +175,12 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        /**
+         * DEBUG BAR
+         */
+        Barryvdh\Debugbar\ServiceProvider::class,
+
+
     ],
 
     /*
@@ -228,5 +234,9 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
     ],
+    /**
+     * DEBUG BAR
+     */
+    'Debugbar' => Barryvdh\Debugbar\Facade::class,
 
 ];
