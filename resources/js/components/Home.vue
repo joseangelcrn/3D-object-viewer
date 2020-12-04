@@ -14,7 +14,7 @@
         <div class="row">
             <div class="col-lg-12 col-md-12">
                 <ul class="list-group">
-                    <li class="list-group-item" v-for="(model,index) in data_user.models" :key="index">
+                    <li class="list-group-item" v-for="(model,index) in data_models" :key="index">
                         <div class="row">
                             <div class="col-lg-8 col-md-6 col-xs-6">
                                 {{model.title}}
@@ -36,10 +36,11 @@
 
 <script>
     export default {
-        props:['user'],
+        props:['user','models'],
         data(){
             return{
                 data_user:[],
+                data_models:[],
                 sending:false
             }
         },
@@ -68,7 +69,7 @@
 
             },
             deleteModelFromView(idModel,index){
-                this.data_user.models.splice(index,1)
+                this.data_models.splice(index,1)
             },
             deleteModelWithConfirm(idModel,index){
                 let modelTitle = this.data_user.models[index].title;
@@ -97,6 +98,8 @@
         },
         beforeMount(){
             this.data_user = this.$props.user;
+            this.data_models = this.$props.models;
+
         },
         mounted() {
             console.log('Component mounted.')
