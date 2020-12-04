@@ -78,6 +78,8 @@ class Model3DController extends Controller
     public function edit($id)
     {
         //
+        $model = Auth::user()->models()->findOrFail($id);
+        return view('model3d.edit',compact('model'));
     }
 
     /**
@@ -90,6 +92,14 @@ class Model3DController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $title = $request->title;
+        $description = $request->description;
+
+        $model = Auth::user()->models()->findOrFail($id);
+        $model->update([
+            'title'=>$title,
+            'description'=>$description,
+        ]);
     }
 
     /**

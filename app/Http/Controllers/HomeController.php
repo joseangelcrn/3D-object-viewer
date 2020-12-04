@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -24,7 +25,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $user = Auth::user()->with('models')->first();
-        return view('home',compact('user'));
+
+        $user = Auth::user();
+        $models = $user->models;
+
+        return view('home',compact('user','models'));
     }
 }

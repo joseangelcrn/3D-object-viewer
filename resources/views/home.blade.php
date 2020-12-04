@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-    <home :user="{{$user}}"></home>
+    <home :user="{{$user}}" :models="{{$models}}"></home>
 @endsection
