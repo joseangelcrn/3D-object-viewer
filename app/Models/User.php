@@ -59,13 +59,22 @@ class User extends Authenticatable
      * Create model3d (binary file and data of database)
      */
 
-      public function createModel3d($title,$description,$uniqueFileName)
+      public function createModel3d($title,$description,$file)
       {
-        return $this->models()->create([
-            'title'=>$title,
-            'description'=>$description,
-            'file_name'=>$uniqueFileName
-        ]);
+        $fileInfo = CustomFile::storeModel($file);
+        $created = false;
+
+        if ($fileInfo['stored']) {
+            $created =  $this->models()->create([
+                'title'=>$title,
+                'description'=>$description,
+                'file_name'=>$fileInfo['unique_file_name'],
+                'file_size'=>$fileInfo['file_size'],
+                'file_extension'=>$fileInfo['file_extension'],
+            ]);
+        }
+
+        return $created;
       }
 
       /**
