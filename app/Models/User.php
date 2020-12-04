@@ -69,6 +69,40 @@ class User extends Authenticatable
       }
 
       /**
+       * Update model3d (bin and bd)
+       */
+
+       public function updateModel3d($idModel,$title,$description,$file = null)
+       {
+            $model = $this->models()->findOrFail($idModel);
+            $updated = false;
+
+           //there is a new file to upload
+            if ($file != null) {
+                $deletedFile = CustomFile::removeModel($model->file_name);
+                $result = CustomFile::storeModel($file);
+
+                if ($result['stored'] and $deletedFile) {
+                    $model->update([
+                        'title'=>$title,
+                        'description'=>$description,
+                        'file_name'=>$result['unique_file_name']
+                    ]);
+                    $updated= true;
+                }
+            }
+            else{
+                $model->update([
+                    'title'=>$title,
+                    'description'=>$description
+                ]);
+                $updated= true;
+            }
+
+            return $updated;
+       }
+
+      /**
        * Delete model3d (binary file and data of database)
        */
 
