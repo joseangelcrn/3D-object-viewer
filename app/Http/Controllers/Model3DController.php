@@ -41,17 +41,12 @@ class Model3DController extends Controller
      */
     public function store(Request $request)
     {
-       $user = auth()->user();
+       $title = $request->title;
+       $description = $request->description;
        $file = $request->file('file');
 
-       $result = CustomFile::storeModel($file);
+       Auth::user()->createModel3D($title,$description,$file);
 
-       if ($result['stored']) {
-            $newModel = $user->createModel3D($request->title,$request->description,$result['unique_file_name']);
-       }
-       else{
-           return response(null,500);
-       }
     }
 
     /**
@@ -63,8 +58,7 @@ class Model3DController extends Controller
     public function show($id)
     {
         //
-        $user = Auth::user();
-        $model = $user->models()->findOrFail($id);
+        $model = Auth::user()->models()->findOrFail($id);
 
         return view('model3d.show',compact('model'));
     }
@@ -99,7 +93,7 @@ class Model3DController extends Controller
         Auth::user()->updateModel3d($id,$title,$description,$file);
 
 
-    }   
+    }
 
     /**
      * Remove the specified resource from storage.
