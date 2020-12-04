@@ -19,7 +19,7 @@ class ModelSeeder extends Seeder
         $faker = Factory::create();
         $user = User::first();
         //
-        $amount = 3;
+        $amount = 10;
         for ($i=0; $i < $amount; $i++) {
             $user->models()->create([
                 'title'=>$faker->text(20),
