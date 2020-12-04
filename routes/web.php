@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Model3DController;
 use App\Models\Model3D;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*

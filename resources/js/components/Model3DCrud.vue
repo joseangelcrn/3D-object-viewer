@@ -97,8 +97,10 @@
                 this.sending = true;
 
                 if (this.isCreate) {
+                    console.log('storing.. !');
                     this.store();
                 } else {
+                    console.log('updating..!');
                     this.update();
                 }
 
@@ -130,10 +132,28 @@
 
             },
             update(){
-                 axios.post('/model/' + this.model3d.id, {
-                    data: this.model3d,
-                    _method: 'patchPOST'
-                })
+                let data = new FormData();
+                data.append('title',this.$props.model3d.title);
+                data.append('description',this.$props.model3d.description);
+                // data.append('file',this.file);
+                console.log('Form');
+                console.log(data);
+                 axios.post('/model/' + this.$props.model3d.id, {
+                    data: data,
+                    _method: 'PUT'
+                }).then(
+                   (response)=>{
+                       console.log('response');
+                       console.log(response);
+                       this.sending = false;
+                    },
+                   (error)=>{
+                        console.log('error');
+                        console.log(error);
+                       this.sending = false;
+
+                   }
+                );
             },
 
             clearForm(){
@@ -156,10 +176,13 @@
             }
         },
         mounted() {
+            console.log(this.$props.model3d);
             console.log('Component mounted.')
-            if (this.$props.model3d.name != null) {
-                isCreate = false;
+            if (this.$props.model3d.title != null) {
+                this.isCreate = false;
+                this.file = this.$props.model3d.file_name
             }
+            console.log('isCreate ?: '+this.isCreate);
         },
         computed: {
         }
