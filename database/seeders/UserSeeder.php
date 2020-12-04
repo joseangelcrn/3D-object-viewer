@@ -15,11 +15,21 @@ class UserSeeder extends Seeder
     public function run()
     {
         //
-        
+
         User::create([
             'name'=>'jose angel',
             'email'=>'jose@gmail.com',
-            'password'=>bcrypt('josejose')
+            'password'=>bcrypt('josejose'),
+            'root_dir'=> substr(base_convert(sha1(uniqid(mt_rand())), 16, 36), 0, 9)
+
+        ]);
+
+        User::create([
+            'name'=>'test',
+            'email'=>'test@gmail.com',
+            'password'=>bcrypt('josejose'),
+            'root_dir'=> substr(base_convert(sha1(uniqid(mt_rand())), 16, 36), 0, 9)
+
         ]);
     }
 }

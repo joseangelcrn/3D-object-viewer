@@ -17,7 +17,7 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->string('root_dir')->unique()->nullable()->default(substr(base_convert(sha1(uniqid(mt_rand())), 16, 36), 0, 9));
+            $table->string('root_dir')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
