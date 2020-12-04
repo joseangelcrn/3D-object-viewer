@@ -22,7 +22,7 @@ class ModelSeeder extends Seeder
         $amount = 3;
         for ($i=0; $i < $amount; $i++) {
             $user->models()->create([
-                'title'=>$faker->text(10),
+                'title'=>$faker->text(20),
                 'description'=>$faker->text(20),
                 'file_name'=>$faker->text(5),
             ]);
