@@ -44,7 +44,7 @@ class Model3DController extends Controller
        $user = auth()->user();
        $file = $request->file('file');
 
-       $result = CustomFile::store($file);
+       $result = CustomFile::storeModel($file);
 
        if ($result['stored']) {
             $newModel = $user->createModel3D($request->title,$request->description,$result['unique_file_name']);
@@ -101,7 +101,6 @@ class Model3DController extends Controller
     public function destroy($id)
     {
         //
-        $user = Auth::user();
-        $user->deleteModel3D($id);
+        Auth::user()->deleteModel3D($id);
     }
 }

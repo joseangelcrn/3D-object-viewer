@@ -16,10 +16,14 @@ class CustomFile
         return Storage::disk('public');
     }
 
+    /**
+     * Core functions
+     */
 
-    public static function store($file,$test = false){
+    private static function store($file,$pathOfServer)
+    {
         $uniqueFileName = uniqid().'_'.$file->getClientOriginalName();
-        $stored =  self::defaultDisk()->put(self::MODELS_ROOT_DIR."\\".$uniqueFileName,  File::get($file));
+        $stored =  self::defaultDisk()->put($pathOfServer."\\".$uniqueFileName,  File::get($file));
         $result = [
             'stored' => $stored,
             'unique_file_name'=>$uniqueFileName
@@ -27,16 +31,32 @@ class CustomFile
         return $result;
     }
 
-    public static function remove(string  $filename)
+    private static function remove($fileName,$pathOfServer)
     {
-        $removed = self::defaultDisk()->delete(self::MODELS_ROOT_DIR."\\".$filename);
-
+        $removed = self::defaultDisk()->delete($pathOfServer."\\".$fileName);
         return $removed;
     }
-
-    public static function exists(string $path)
+    private  static function exists($fileName,$pathOfServer)
     {
-        $exists = self::defaultDisk()->exists($path);
+        $exists = self::defaultDisk()->exists($pathOfServer.'\\'.$fileName);
         return $exists;
     }
+
+    /**
+     * Specifics functions
+     */
+
+    public static function storeModel($file){
+        return self::store($file,self::MODELS_ROOT_DIR);
+    }
+
+    public static function removeModel($fileName){
+        return self::remove($fileName,self::MODELS_ROOT_DIR);
+    }
+
+    public static function existsModel($fileName){
+        return self::exists($fileName,self::MODELS_ROOT_DIR);
+    }
+
+
 }
