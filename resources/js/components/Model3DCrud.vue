@@ -73,8 +73,8 @@
                 type: Object,
                 default() {
                     return {
-                        title:'titulo desde vuejs',
-                        description:'descripcion desde vuejs'
+                        title:'',
+                        description:''
                     }
                 }
             }
@@ -87,7 +87,8 @@
                 file:null,
                 headers:{
                     'Content-Type': 'multipart/form-data',
-                }
+                },
+                fileWasModified:false
             }
         },
         methods:{
@@ -132,25 +133,29 @@
 
             },
             update(){
+                console.log('File was modified = '+this.fileWasModified);
+
                 let data = new FormData();
                 data.append('title',this.$props.model3d.title);
                 data.append('description',this.$props.model3d.description);
-                // data.append('file',this.file);
-                console.log('Form');
-                console.log(data);
-                 axios.post('/model/' + this.$props.model3d.id, {
-                    data: data,
-                    _method: 'PUT'
-                }).then(
+                if (this.fileWasModified) {
+                    data.append('file',this.file);
+                }
+                data.append('_method','PUT');
+
+                 axios.post('/model/' + this.$props.model3d.id, data,this.headers).then(
                    (response)=>{
                        console.log('response');
                        console.log(response);
                        this.sending = false;
+                       this.isResponseOk = true;
+
                     },
                    (error)=>{
                         console.log('error');
                         console.log(error);
-                       this.sending = false;
+                        this.sending = false;
+                        this.isResponseOk = false;
 
                    }
                 );
@@ -167,6 +172,7 @@
             loadPreviewFile(event){
                 console.log('Pre-load files');
                 this.file = event.target.files[0];
+                this.fileWasModified = true;
                 console.log('----+++---');
                 console.log(this.file);
             },
@@ -178,7 +184,7 @@
         mounted() {
             console.log(this.$props.model3d);
             console.log('Component mounted.')
-            if (this.$props.model3d.title != null) {
+            if (this.$props.model3d.title != '') {
                 this.isCreate = false;
                 this.file = this.$props.model3d.file_name
             }
