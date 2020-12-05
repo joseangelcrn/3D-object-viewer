@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use App\Models\CustomFile;
 use App\Models\Model3D;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Auth;
@@ -64,7 +65,25 @@ class Model3DCrudTest extends TestCase
         $model->save();
 
         $response = $this->get('/model/'.$model->id);
-        
+
+        $response->assertStatus(200);
+    }
+
+    public function testDelete()
+    {
+        $this->withoutMiddleware();
+        //make user and login
+        $user = User::factory()->create();
+
+        Auth::login($user);
+
+        //Create 3d model and attach to current fake user
+        $model = Model3D::factory()->make();
+        $model->user_id = $user->id;
+        $model->save();
+
+        $response = $this->delete('/model/'.$model->id,$model->toArray());
+
         $response->assertStatus(200);
     }
 }
