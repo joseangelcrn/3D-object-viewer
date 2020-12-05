@@ -52,11 +52,20 @@ class Model3DCrudTest extends TestCase
         $this->assertTrue($removedDirectory);
     }
 
-    // public function testDelete()
-    // {
-    //     $response = $this->delete('/model',$this->model->id);
+    public function testShow()
+    {
+        $user = User::factory()->create();
 
-    //     $this->assertStatus(200);
-    // }
+        Auth::login($user);
+
+        //Create 3d model and attach to current fake user
+        $model = Model3D::factory()->make();
+        $model->user_id = $user->id;
+        $model->save();
+
+        $response = $this->get('/model/'.$model->id);
+        
+        $response->assertStatus(200);
+    }
 }
 
