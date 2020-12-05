@@ -5,13 +5,12 @@ namespace Tests\Feature;
 use App\Models\CustomFile;
 use App\Models\Model3D;
 use App\Models\User;
-use Faker\Factory;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Auth;
 use Tests\TestCase;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class Model3DCrudTest extends TestCase
 {
@@ -41,12 +40,23 @@ class Model3DCrudTest extends TestCase
 
         $response->assertStatus(200);
 
-        //Check if file exist
 
-        $pathFile = '';
-        CustomFile::exists($pathFile);
+        $exist  = CustomFile::existsModel('',$user->root_dir);
 
-        //Remove test file
+        $this->assertTrue($exist);
 
+        //Test is finished, now I must to delete uploaded file
+
+        $removedDirectory =  CustomFile::deleteUserDirectory($user->root_dir);
+
+        $this->assertTrue($removedDirectory);
     }
+
+    // public function testDelete()
+    // {
+    //     $response = $this->delete('/model',$this->model->id);
+
+    //     $this->assertStatus(200);
+    // }
 }
+
