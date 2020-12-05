@@ -9,7 +9,7 @@
         <hr>
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12">
-                <model3d-viewer :path="'../storage/models3D/'+model.file_name"></model3d-viewer>
+                <model3d-viewer :path="path"></model3d-viewer>
             </div>
         </div>
     </div>
@@ -19,9 +19,14 @@
 <script>
     export default {
         props:['model'],
+        data(){
+            return{
+                path:''
+            }
+        },
         mounted() {
-            console.log('Component mounted.')
             console.log(this.$props.model);
+            this.path = '../storage/models3D/'+this.$props.model.user.root_dir+'/'+this.$props.model.file_name;
         }
     }
 </script>
