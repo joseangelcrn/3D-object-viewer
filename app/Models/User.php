@@ -61,7 +61,7 @@ class User extends Authenticatable
 
       public function createModel3d($title,$description,$file)
       {
-        $fileInfo = CustomFile::storeModel($file);
+        $fileInfo = CustomFile::storeModel($file,$this->root_dir);
         $created = false;
 
         if ($fileInfo['stored']) {
@@ -88,8 +88,8 @@ class User extends Authenticatable
 
            //there is a new file to upload
             if ($file != null) {
-                $deletedFile = CustomFile::removeModel($model->file_name);
-                $result = CustomFile::storeModel($file);
+                $deletedFile = CustomFile::removeModel($model->file_name,$this->root_dir);
+                $result = CustomFile::storeModel($file,$this->root_dir);
 
                 if ($result['stored'] and $deletedFile) {
                     $model->update([
@@ -122,11 +122,11 @@ class User extends Authenticatable
         $fileExists = true;
 
         $model = $this->models()->findOrFail($id);
-        $fileExists = CustomFile::existsModel($model->file_name);
+        $fileExists = CustomFile::existsModel($model->file_name,$this->root_dir);
 
         //found file so is going to delete it
         if ($fileExists) {
-            $fileDeleted = CustomFile::removeModel($model->file_name);
+            $fileDeleted = CustomFile::removeModel($model->file_name,$this->root_dir);
         }
         //if file doesnt exists or file is already deleted then delete model of database
         if ($fileDeleted or !$fileExists) {

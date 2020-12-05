@@ -20,9 +20,16 @@ class CustomFile
      * Core functions
      */
 
+     private static function setHashFileName($file)
+     {
+        $uniqueFileName = uniqid().'_'.$file->getClientOriginalName();
+        $uniqueFileName = str_replace(' ','_',$uniqueFileName); //replace 'spaces' with '_'
+        return $uniqueFileName;
+     }
+
     private static function store($file,$pathOfServer)
     {
-        $uniqueFileName = uniqid().'_'.$file->getClientOriginalName();
+        $uniqueFileName = self::setHashFileName($file);
         $extension = $file->getClientOriginalExtension();
         $size = $file->getSize();
 
@@ -51,16 +58,16 @@ class CustomFile
      * Specifics functions
      */
 
-    public static function storeModel($file){
-        return self::store($file,self::MODELS_ROOT_DIR);
+    public static function storeModel($file,$subDir){
+        return self::store($file,self::MODELS_ROOT_DIR.'\\'.$subDir.'\\');
     }
 
-    public static function removeModel($fileName){
-        return self::remove($fileName,self::MODELS_ROOT_DIR);
+    public static function removeModel($fileName,$subDir){
+        return self::remove($fileName,self::MODELS_ROOT_DIR.'\\'.$subDir.'\\');
     }
 
-    public static function existsModel($fileName){
-        return self::exists($fileName,self::MODELS_ROOT_DIR);
+    public static function existsModel($fileName,$subDir){
+        return self::exists($fileName,self::MODELS_ROOT_DIR.'\\'.$subDir.'\\');
     }
 
 
