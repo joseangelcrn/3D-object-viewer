@@ -54,9 +54,19 @@ class CustomFile
         return $exists;
     }
 
+    private static function deleteDirectory($path){
+        return self::defaultDisk()->deleteDirectory($path);
+    }
+
+
+
     /**
      * Specifics functions
      */
+
+    public static function deleteUserDirectory($rootDirUser){
+        return self::deleteDirectory(self::MODELS_ROOT_DIR.'\\'.$rootDirUser.'\\');
+    }
 
     public static function storeModel($file,$subDir){
         return self::store($file,self::MODELS_ROOT_DIR.'\\'.$subDir.'\\');
@@ -69,6 +79,7 @@ class CustomFile
     public static function existsModel($fileName,$subDir){
         return self::exists($fileName,self::MODELS_ROOT_DIR.'\\'.$subDir.'\\');
     }
+
 
 
 }
