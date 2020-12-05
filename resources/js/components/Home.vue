@@ -68,7 +68,7 @@
 
 
             },
-            deleteModelFromView(idModel,index){
+            deleteModelFromView(index){
                 this.data_models.splice(index,1)
             },
             deleteModelWithConfirm(idModel,index){
