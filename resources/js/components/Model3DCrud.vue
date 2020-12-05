@@ -62,11 +62,14 @@
                 </form>
             </div>
         </div>
+        <vue-confirm-dialog></vue-confirm-dialog>
     </div>
 
 </template>
 
 <script>
+    import {constants} from '../constants/index'
+
     export default {
         props:{
             model3d: {
@@ -170,15 +173,43 @@
                 this.file = null;
             },
             loadPreviewFile(event){
-                console.log('Pre-load files');
-                this.file = event.target.files[0];
-                this.fileWasModified = true;
+                console.log('Aux file');
+                let auxFile = event.target.files[0];
+                let splitedFileName = auxFile.name.split('.');
+                let extension =splitedFileName[splitedFileName.length -1];
+    
+                if (this.isAllowedExtension(extension)) {
+                    this.file = auxFile;
+                    this.fileWasModified = true;
+                }
+                else{
+                    let that = this;
+                    let message = 'La extension del fichero no está permitida';
+                    this.$confirm(
+                        {
+                        message,
+                        button: {
+                            yes: 'OK'
+                        },
+                        /**
+                         * Callback Function
+                         * @param {Boolean} confirm
+                         */
+                        callback: (confirm) => {
+                            that.deletePreviewFile();
+                        }
+                        }
+                    )
+                }
                 console.log('----+++---');
                 console.log(this.file);
             },
             deletePreviewFile(){
                 console.log('Delete preview file');
                 this.file = null;
+            },
+            isAllowedExtension(ext){
+                return constants.extensions.includes(ext);
             }
         },
         mounted() {
@@ -189,6 +220,10 @@
                 this.file = this.$props.model3d.file_name
             }
             console.log('isCreate ?: '+this.isCreate);
+
+            console.log('CONSTANTES funct');
+            // console.log(constants.extensions);
+
         },
         computed: {
         }
