@@ -25,6 +25,6 @@ Auth::routes();
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-    Route::resource('/model', Model3DController::class);
+    Route::resource('/model', Model3DController::class)->name('*','model');
 });
 
