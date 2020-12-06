@@ -177,7 +177,7 @@
                 let auxFile = event.target.files[0];
                 let splitedFileName = auxFile.name.split('.');
                 let extension =splitedFileName[splitedFileName.length -1];
-    
+
                 if (this.isAllowedExtension(extension)) {
                     this.file = auxFile;
                     this.fileWasModified = true;
@@ -217,7 +217,12 @@
             console.log('Component mounted.')
             if (this.$props.model3d.title != '') {
                 this.isCreate = false;
-                this.file = this.$props.model3d.file_name
+                // let auxFile = this.$props.model3d.file;
+                let model = this.$props.model3d;
+                this.file = {
+                    name: model.file_name,
+                    size:model.file_size
+                };
             }
             console.log('isCreate ?: '+this.isCreate);
 
