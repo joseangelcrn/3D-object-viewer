@@ -1,61 +1,75 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# 3D-object-viewer
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## ¿Qué es?
 
-## About Laravel
+Aplicación web para el almacenamiento de modelos 3D con visor tridimensional incorporado.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## ¿Por qué esta aplicación?
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+He estado aprendiendo temas de <b>fotogrametría</b>, practicando con objetos de mis alrededores y quise, de alguna forma, almacenar todos aquellos resultados fotogrametricos en un un sitio: esta aplicación. La aplicación no tiene mayor misterio: almacena ciertos tipo de ficheros y da la posibilidad de verlos en un visor 3D incorporado en ella, pero cumple la función especifica para la cual la he desarrollado.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+<hr>
 
-## Learning Laravel
+# A cerca de la aplicación
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Modelos fakes y seeders
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+La aplicación solo tiene dos modelos principales, <b>los usuarios y los modelos 3d<b>.
 
-## Laravel Sponsors
+- Para crear usuarios fake (sin guardar en bd): `User::factory()->make();` 
+- Para crear usuarios fake (con guardado en bd): `User::factory()->create()` 
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+- Para crear modelos fake (sin guardar en bd): `Model3D::factory()->make()` 
+- Para crear modelos fake (con guardado en bd): `Model3D::factory()->create()` 
 
-### Premium Partners
+### ¡¡ [Los modelos 3D creados de esta manera no tendrán un modelo 3D real, para ver un modelo real debe subirlo y acceder, posteriormente, al visor de este.] !!
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[OP.GG](https://op.gg)**
 
-## Contributing
+### Correr los tests
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+`php artisan test`
 
-## Code of Conduct
+Debes de ver algo asi 
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```
+   PASS  Tests\Feature\Model3DCrudTest
+  ✓ store
+  ✓ show
+  ✓ update
+  ✓ delete
 
-## Security Vulnerabilities
+  Tests:  4 passed
+  Time:   x.xxs
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+<hr>
+
+# Sobre la fotogrametría
+
+## ¿Qué es la fotogrametría?
+
+La Fotogrametría es una técnica empleada para determinar las propiedades geométricas, dimensiones y forma, de los objetos y espacios. Esto se consigue, como se puede deducir de su denominación, mediante la realización de fotografías. 
+
+<br> 
+
+O dicho de otra manera: crear modelos tridimensionales a partir de fotos.
+
+## ¿Qué usos puede tener la fotogrametría?
+
+- Agronomía.
+- Cartografía.
+- Ortofotografía.
+- Arquitectura.
+- Planeamiento y ordenación del territorio.
+- Medio ambiente.
+- Arqueología.
+- Control de estructuras.
+- Mediciones.
+- Topografía.
+- Medicina.
+- Zoologia. 
+- Modelos realistas para peliculas y/o videojuegos.
+
+## 
