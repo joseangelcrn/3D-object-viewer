@@ -3,6 +3,7 @@
         <div class="row">
             <div class="col-lg-12 col-md-12">
                 <h2 class="text-center">{{user.name}}</h2>
+                <gif-loading v-show="sending"></gif-loading>
             </div>
         </div>
          <div class="row my-4">
@@ -29,8 +30,8 @@
                 </ul>
             </div>
         </div>
-    <vue-confirm-dialog></vue-confirm-dialog>
 
+    <vue-confirm-dialog></vue-confirm-dialog>
     </div>
 </template>
 
