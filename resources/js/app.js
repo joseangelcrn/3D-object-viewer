@@ -32,6 +32,8 @@ Vue.component('model3d-crud', require('./components/Model3DCrud.vue').default);
 Vue.component('model3d-show', require('./components/Model3DShow.vue').default);
 Vue.component('model3d-viewer', require('./components/Model3DViewer.vue').default);
 
+Vue.component('gif-loading', require('./components/GifLoading.vue').default);
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
