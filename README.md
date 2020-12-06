@@ -26,8 +26,8 @@ La aplicación solo tiene dos modelos principales, <b>los usuarios y los modelos
 
 ### Rellenar la bd con datos
 
-- Cargar seeds `php artisan db:seed`. <br>
-- Limpiar la BD y cargar seeds `php artisan migrate:refresh --seed`.
+- Cargar seeds `php artisan db:seed` <br>
+- Limpiar la BD y cargar seeds `php artisan migrate:refresh --seed`
 
 
 ### Correr los tests
