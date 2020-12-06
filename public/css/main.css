@@ -1,0 +1,19 @@
+body{
+    background-color:#b8d8f8 ;
+}
+
+#menu_bar, #menu_bar *{
+    background-color: #79b6f2 !important;
+    color: #ffffff;
+}
+
+.btn {
+    -webkit-box-shadow: 3px 13px 8px -11px rgba(0,0,0,0.29);
+    -moz-box-shadow: 3px 13px 8px -11px rgba(0,0,0,0.29);
+    box-shadow: 3px 13px 8px -11px rgba(0,0,0,0.29);
+}
+
+*{
+    font-family: "FreeMono", "monospace"	;
+}
+
