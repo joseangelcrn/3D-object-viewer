@@ -24,6 +24,11 @@ La aplicación solo tiene dos modelos principales, <b>los usuarios y los modelos
 
 ### ¡¡ [Los modelos 3D creados de esta manera no tendrán un modelo 3D real, para ver un modelo real debe subirlo y acceder, posteriormente, al visor de este.] !!
 
+### Rellenar la bd con datos
+
+- Cargar seeds `php artisan db:seed`. <br>
+- Limpiar la BD y cargar seeds `php artisan migrate:refresh --seed`.
+
 
 ### Correr los tests
 
