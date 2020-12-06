@@ -1,0 +1,13 @@
+body{
+    background-color:#b8d8f8 ;
+}
+
+#menu_bar, #menu_bar *{
+    background-color: #79b6f2 !important;
+    color: #ffffff;
+}
+
+*{
+    font-family: "FreeMono", "monospace"	;
+}
+
