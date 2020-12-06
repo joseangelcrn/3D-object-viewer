@@ -69,6 +69,39 @@ class Model3DCrudTest extends TestCase
         $response->assertStatus(200);
     }
 
+    public function testUpdate()
+    {
+        $this->withoutMiddleware();
+
+        $user = User::factory()->create();
+        $file = UploadedFile::fake()->create('test-model-3d-updated.obj', 100);
+
+        Auth::login($user);
+
+        //Create 3d model and attach to current fake user
+        $model = Model3D::factory()->make();
+        $model->user_id = $user->id;
+        $model->save();
+
+        //simulating update..
+        $updatedModel = Model3D::factory()->make();
+        $updatedModel->id = $model->id;
+
+        //attaching file to model for confort.
+        $updatedModel->file = $file;
+
+        $response = $this->put('/model/'.$updatedModel->id,$updatedModel->toArray());
+
+        $response->assertStatus(200);
+
+        //Test is finished, now I must to delete uploaded file
+
+        $removedDirectory =  CustomFile::deleteUserDirectory($user->root_dir);
+        
+        $this->assertTrue($removedDirectory);
+
+    }
+
     public function testDelete()
     {
         $this->withoutMiddleware();
