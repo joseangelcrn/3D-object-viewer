@@ -10,12 +10,17 @@
         z-index: 1;
     }
     #gif_img{
-        width:75px;
-        height: 75px;
+        width:50px;
+        height: 50px;
     }
 </style>
 <script>
     export default {
+        data(){
+            return{
+                path:'../storage/system/loader.gif'
+            }
+        }
 
     }
 </script>

@@ -4,7 +4,7 @@
         <div class="row d-flex justify-content-center">
             <div class="col-lg-10 col-md-10">
                 <form>
-                    <gif-loading v-show="sending"></gif-loading>
+                    <gif-loading v-show="true"></gif-loading>
                     <div class="form-group">
                         <label>Titulo</label>
                         <input type="text" class="form-control" name="title" v-model="model3d.title">
