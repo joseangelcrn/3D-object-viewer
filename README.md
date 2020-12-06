@@ -6,7 +6,7 @@ Aplicación web para el almacenamiento de modelos 3D con visor tridimensional in
 
 ## ¿Por qué esta aplicación?
 
-He estado aprendiendo temas de <b>fotogrametría</b>, practicando con objetos de mis alrededores y quise, de alguna forma, almacenar todos aquellos resultados fotogrametricos en un un sitio: esta aplicación. La aplicación no tiene mayor misterio: almacena ciertos tipo de ficheros y da la posibilidad de verlos en un visor 3D incorporado en ella, pero cumple la función especifica para la cual la he desarrollado.
+He estado aprendiendo temas de fotogrametría, practicando con objetos de mis alrededores y quise, de alguna forma, almacenar todos aquellos resultados fotométricos en un sitio: esta aplicación. La aplicación no tiene mayor misterio: almacena ciertos tipo de ficheros y da la posibilidad de verlos en un visor 3D incorporado en ella, pero cumple la función especifica para la cual la he desarrollado.
 
 <hr>
 
