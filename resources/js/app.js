@@ -35,6 +35,8 @@ Vue.component('model3d-viewer', require('./components/Model3DViewer.vue').defaul
 Vue.component('gif-loading', require('./components/GifLoading.vue').default);
 
 
+Vue.component('file-uploader', require('./components/FileUploader.vue').default);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
